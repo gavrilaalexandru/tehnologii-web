@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <script>
+      window.onload = () => {
+        var form = document.getElementById("form");
+
+        var formSubmitHandler = (e) => {
+          e.preventDefault();
+          var table = document
+            .getElementById("table")
+            .getElementsByTagName("tbody")[0];
+          var nume = document.getElementById("nume").value;
+          var telefon = document.getElementById("telefon").value;
+
+          var newRow = table.insertRow();
+          var nameCell = newRow.insertCell(0);
+          var phoneCell = newRow.insertCell(1);
+
+          nameCell.textContent = nume;
+          phoneCell.textContent = telefon;
+
+          document.getElementById("nume").value = "";
+          document.getElementById("telefon").value = "";
+        };
+        form.onsubmit = formSubmitHandler;
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Agenta</h1>
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Telefon</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <h2>Adauga un nou contact</h2>
+    <form id="form">
+      <input type="text" id="nume" placeholder="Nume" />
+      <input type="text" id="telefon" placeholder="Telefon" />
+      <button type="submit" id="submitBtn">Add</button>
+    </form>
+  </body>
+</html>
